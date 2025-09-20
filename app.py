@@ -12,13 +12,22 @@ CORS(app)  # allow frontend requests
 # ------------------- HELPER FUNCTION -------------------
 
 def get_db_connection():
-    return mysql.connector.connect(
-        host=os.getenv("MYSQL_HOST", "mysql-production-27b7.up.railway.app"),
-        user=os.getenv("root"),
-        password=os.getenv("jUbQMKMXXQaEYttWlIFaAAkYsTVDIFvv"),
-        database=os.getenv("railway"),
-        port=int(os.getenv("MYSQL_PORT", 3306))
-    )
+    import mysql.connector
+    import os
+
+    try:
+        conn = mysql.connector.connect(
+            host=os.getenv("MYSQLHOST", "mysql-production-27b7.up.railway.app"),  # Railway DB host
+            user=os.getenv("MYSQLUSER", "root"),         # Railway DB username
+            password=os.getenv("MYSQLPASSWORD","jUbQMKMXXQaEYttWlIFaAAkYsTVDIFvv"), # Railway DB password
+            database=os.getenv("MYSQLDATABASE","railway"), # Railway DB name
+            port=int(os.getenv("MYSQLPORT", 3306))
+        )
+        return conn
+    except mysql.connector.Error as err:
+        print(f"Error connecting to MySQL: {err}")
+        return None
+
 
 # ------------------- USER AUTH -------------------
 @app.route('/signup', methods=['POST'])
