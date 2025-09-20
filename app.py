@@ -271,9 +271,6 @@ def get_advisory():
             cursor.close()
             conn.close()
 
-@app.route("/login", methods=["POST"])
-def login():
-    return "Login works!"
 
 # ------------------- CONTACT FORM -------------------
 @app.route('/submit', methods=['POST'])
