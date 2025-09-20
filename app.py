@@ -10,24 +10,14 @@ app = Flask(__name__)
 CORS(app)  # allow frontend requests
 
 # ------------------- HELPER FUNCTION -------------------
-
 def get_db_connection():
-    import mysql.connector
-    import os
-
-    try:
-        conn = mysql.connector.connect(
-            host=os.getenv("MYSQLHOST", "mysql-production-27b7.up.railway.app"),  # Railway DB host
-            user=os.getenv("MYSQLUSER", "root"),         # Railway DB username
-            password=os.getenv("MYSQLPASSWORD","jUbQMKMXXQaEYttWlIFaAAkYsTVDIFvv"), # Railway DB password
-            database=os.getenv("MYSQLDATABASE","railway"), # Railway DB name
-            port=int(os.getenv("MYSQLPORT", 3306))
-        )
-        return conn
-    except mysql.connector.Error as err:
-        print(f"Error connecting to MySQL: {err}")
-        return None
-
+    return mysql.connector.connect(
+        host=os.getenv("MYSQL_HOST", "mysql-production-27b7.up.railway.app"),
+        user=os.getenv("MYSQL_USER"),
+        password=os.getenv("MYSQL_PASSWORD"),
+        database=os.getenv("MYSQL_DATABASE"),
+        port=int(os.getenv("MYSQL_PORT", 3306))
+    )
 
 # ------------------- USER AUTH -------------------
 @app.route('/signup', methods=['POST'])
@@ -210,16 +200,6 @@ def field_advisory():
             cursor.close()
             conn.close()
 
-
-@app.route("/test-db")
-def test_db():
-    conn = get_db_connection()
-    if conn is None:
-        return "DB connection failed! Check logs for details."
-    conn.close()
-    return "DB connection successful!"
-
-
 # ------------------- ADVISORIES -------------------
 @app.route('/advisory', methods=['POST'])
 def submit_advisory():
@@ -290,7 +270,6 @@ def get_advisory():
         if conn.is_connected():
             cursor.close()
             conn.close()
-
 
 # ------------------- CONTACT FORM -------------------
 @app.route('/submit', methods=['POST'])
@@ -378,11 +357,8 @@ def get_db_connection():
         print("Error connecting to MySQL:", e)
         return None
 
-
 # ------------------- RUN APP -------------------
 if __name__ == "__main__":
-    import os
     port = int(os.environ.get("PORT", 5000))
-    app.run(host="0.0.0.0", port=port, debug=True)
-
+    app.run(debug=True, host="0.0.0.0", port=port)
 
