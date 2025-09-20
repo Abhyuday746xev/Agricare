@@ -11,18 +11,13 @@ CORS(app)  # allow frontend requests
 
 # ------------------- HELPER FUNCTION -------------------
 def get_db_connection():
-    """Return a new MySQL connection."""
-    try:
-        conn = mysql.connector.connect(
-            host="localhost",
-            user="root",
-            password="12345678",
-            database="SIH"
-        )
-        return conn
-    except Error as e:
-        print("Error connecting to MySQL:", e)
-        return None
+    return mysql.connector.connect(
+        host=os.getenv("MYSQL_HOST"),
+        user=os.getenv("MYSQL_USER"),
+        password=os.getenv("MYSQL_PASSWORD"),
+        database=os.getenv("MYSQL_DATABASE"),
+        port=int(os.getenv("MYSQL_PORT"))
+    )
 
 # ------------------- USER AUTH -------------------
 @app.route('/signup', methods=['POST'])
@@ -363,5 +358,7 @@ def get_db_connection():
         return None
 
 # ------------------- RUN APP -------------------
-if __name__ == '__main__':
-    app.run(debug=True, port=5001)
+if __name__ == "__main__":
+    port = int(os.environ.get("PORT", 5000))
+    app.run(debug=True, host="0.0.0.0", port=port)
+
