@@ -206,6 +206,17 @@ def field_advisory():
             cursor.close()
             conn.close()
 
+
+@app.route("/test-db")
+def test_db():
+    try:
+        conn = get_db_connection()
+        conn.close()
+        return "DB connection successful!"
+    except Exception as e:
+        return f"DB connection failed: {e}"
+
+
 # ------------------- ADVISORIES -------------------
 @app.route('/advisory', methods=['POST'])
 def submit_advisory():
@@ -363,8 +374,6 @@ def get_db_connection():
     except Error as e:
         print("Error connecting to MySQL:", e)
         return None
-
-
 
 
 # ------------------- RUN APP -------------------
