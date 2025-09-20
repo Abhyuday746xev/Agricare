@@ -271,6 +271,10 @@ def get_advisory():
             cursor.close()
             conn.close()
 
+@app.route("/login", methods=["POST"])
+def login():
+    return "Login works!"
+
 # ------------------- CONTACT FORM -------------------
 @app.route('/submit', methods=['POST'])
 def submit_contact():
@@ -356,6 +360,9 @@ def get_db_connection():
     except Error as e:
         print("Error connecting to MySQL:", e)
         return None
+
+
+
 
 # ------------------- RUN APP -------------------
 if __name__ == "__main__":
