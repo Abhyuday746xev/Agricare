@@ -1,0 +1,251 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Agricare </title>
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="min-h-screen bg-gradient-to-b from-emerald-50 to-white text-slate-800">
+
+<!-- NAVBAR -->
+<header class="max-w-7xl mx-auto px-6 py-6 flex items-center justify-between">
+  <div class="flex items-center gap-3">
+    <img src="image/logo.jpeg" alt="AgriCare Logo" class="w-10 h-10 rounded-lg object-cover">
+
+    <div>
+      <h1 class="text-lg font-semibold">Agricare</h1>
+      <p class="text-xs text-slate-500">Smart farming · Sustainable yields</p>
+    </div>
+  </div>
+
+  <nav class="hidden md:flex items-center gap-6 text-sm">
+    <a href="#services" class="hover:text-emerald-600">Services</a>
+    <a href="aim.html" class="hover:text-emerald-600">Our Aim</a>
+    <a href="team.html" class="hover:text-emerald-600">Our Team</a>
+    <a href="index.html" class="ml-4 px-4 py-2 rounded-lg bg-emerald-600 text-white text-sm">Logout</a>
+  </nav>
+
+  <button class="md:hidden p-2 rounded-md bg-emerald-100">☰</button>
+</header>
+
+
+  <!-- HERO -->
+  <section class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-8 items-center py-12">
+    <div>
+      <h2 class="text-3xl md:text-4xl font-extrabold leading-tight">Agricare Advisory — grow smarter, waste less</h2>
+      <p class="mt-4 text-slate-600">Actionable crop advice, soil and pest guidance, irrigation recommendations and fertilizer planning — tailored for your farm, on your timeline.</p>
+
+      <div class="mt-6 flex flex-wrap gap-4">
+        <!-- Talk to an expert removed per request -->
+        <a href="field.html" class="px-5 py-3 border border-emerald-600 text-emerald-600 rounded-lg">Crop Suggestions</a>
+        <a href="advisory.html" class="px-5 py-3 border border-emerald-600 text-emerald-600 rounded-lg">Pest Management</a>
+      </div>
+
+      <ul class="mt-6 grid grid-cols-2 gap-3 text-sm text-slate-600">
+        <li>• Farmer-friendly recommendations</li>
+        <li>• SMS & App alerts</li>
+        <li>• 24/7 Help Available</li>
+        <li>• Weather-aware advisories</li>
+      </ul>
+
+      <div class="mt-6 text-xs text-slate-500">Trusted by smallholders & agri-businesses — practical advice, verified by experts.</div>
+    </div>
+
+    <div class="relative">
+      <img src="https://images.unsplash.com/photo-1501004318641-b39e6451bec6?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3&s=example" alt="farm" class="rounded-xl shadow-lg w-full h-80 object-cover"/>
+
+      <div class="absolute -bottom-6 left-6 bg-white/90 rounded-lg p-4 shadow-md w-11/12 md:w-10/12">
+        <div class="flex items-center gap-4">
+          <div class="w-12 h-12 bg-emerald-100 rounded-md flex items-center justify-center">🌾</div>
+          <div>
+            <div class="text-sm font-semibold">Free crop status check</div>
+            <div class="text-xs text-slate-500">Send us a photo or field details and get a free initial assessment.</div>
+          </div>
+          <div class="ml-auto hidden sm:block">
+            <a href="#contact" class="text-emerald-600 text-sm">Request now →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+<!-- SERVICES -->
+<section id="services" class="max-w-7xl mx-auto px-6 py-12">
+  <h3 class="text-2xl font-bold">Our Services</h3>
+  <p class="text-slate-600 mt-2">Comprehensive advisory built for real farms — practical, localized, and affordable.</p>
+
+  <div class="mt-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 overflow-visible relative">
+    
+    <!-- Card 1 -->
+    <article class="bg-white rounded-xl p-5 shadow-sm transform transition-all duration-500 hover:scale-125 hover:-translate-y-10 hover:z-50 cursor-pointer">
+      <h4 class="font-semibold">Soil Testing & Fertility</h4>
+      <p class="text-sm text-slate-600 mt-2">
+        Detailed soil reports with fertilizer plans and nutrient management.
+      </p>
+    </article>
+
+    <!-- Card 2 -->
+    <article class="bg-white rounded-xl p-5 shadow-sm transform transition-all duration-500 hover:scale-125 hover:-translate-y-10 hover:z-50 cursor-pointer">
+      <h4 class="font-semibold">Pest & Disease Advisory</h4>
+      <p class="text-sm text-slate-600 mt-2">
+        Image-based diagnosis and treatment recommendations.
+      </p>
+    </article>
+
+    <!-- Card 3 -->
+    <article class="bg-white rounded-xl p-5 shadow-sm transform transition-all duration-500 hover:scale-125 hover:-translate-y-10 hover:z-50 cursor-pointer">
+      <h4 class="font-semibold">Irrigation & Water</h4>
+      <p class="text-sm text-slate-600 mt-2">
+        Optimized irrigation scheduling to save water and increase yields.
+      </p>
+    </article>
+
+    <!-- Card 4 -->
+    <article class="bg-white rounded-xl p-5 shadow-sm transform transition-all duration-500 hover:scale-125 hover:-translate-y-10 hover:z-50 cursor-pointer">
+      <h4 class="font-semibold">Crop Planning</h4>
+      <p class="text-sm text-slate-600 mt-2">
+        Seasonal crop selection and rotation planning.
+      </p>
+    </article>
+
+    <!-- Card 5 -->
+    <article class="bg-white rounded-xl p-5 shadow-sm transform transition-all duration-500 hover:scale-125 hover:-translate-y-10 hover:z-50 cursor-pointer">
+      <h4 class="font-semibold">Market Advisory</h4>
+      <p class="text-sm text-slate-600 mt-2">
+        Harvest timing and market price pointers for better returns.
+      </p>
+    </article>
+
+    <!-- Card 6 -->
+    <article class="bg-white rounded-xl p-5 shadow-sm transform transition-all duration-500 hover:scale-125 hover:-translate-y-10 hover:z-50 cursor-pointer">
+      <h4 class="font-semibold">Digital Farm Records</h4>
+      <p class="text-sm text-slate-600 mt-2">
+        Record keeping and analytics for farm decisions.
+      </p>
+    </article>
+
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section id="how" class="bg-emerald-50 py-12">
+  <div class="max-w-6xl mx-auto px-6">
+    <h3 class="text-2xl font-bold">How Agricare works</h3>
+    <p class="text-slate-600 mt-2">Fast, affordable and localized advice in 3 simple steps.</p>
+
+    <ol class="mt-6 grid grid-cols-1 md:grid-cols-3 gap-6 overflow-visible relative">
+      
+      <!-- Step 1 -->
+      <li class="bg-white rounded-lg p-6 shadow-sm transform transition-all duration-500 hover:scale-110 hover:-translate-y-6 hover:z-50 cursor-pointer text-center">
+        1. Share field details
+      </li>
+
+      <!-- Step 2 -->
+      <li class="bg-white rounded-lg p-6 shadow-sm transform transition-all duration-500 hover:scale-110 hover:-translate-y-6 hover:z-50 cursor-pointer text-center">
+        2. Receive tailored plan
+      </li>
+
+      <!-- Step 3 -->
+      <li class="bg-white rounded-lg p-6 shadow-sm transform transition-all duration-500 hover:scale-110 hover:-translate-y-6 hover:z-50 cursor-pointer text-center">
+        3. Follow up & support
+      </li>
+
+    </ol>
+  </div>
+</section>
+
+
+  <!-- CONTACT -->
+  <section id="contact" class="bg-white py-12">
+    <div class="max-w-5xl mx-auto px-6 grid md:grid-cols-2 gap-8">
+      <div>
+        <h3 class="text-2xl font-bold">Contact our Agri Experts</h3>
+        <p class="text-slate-600 mt-2">Tell us about your farm and we’ll get back with a tailored plan. Free initial check.</p>
+      </div>
+      <div>
+        <form id="contactForm" class="bg-emerald-50 p-6 rounded-lg">
+          <label class="block text-sm">Name</label>
+          <input id="name" name="name" class="w-full mt-1 p-2 rounded border" placeholder="Your name" required />
+
+          <label class="block text-sm mt-3">Email or Phone</label>
+          <input id="email" name="email" class="w-full mt-1 p-2 rounded border" placeholder="Email or mobile" required />
+
+          <label class="block text-sm mt-3">Message</label>
+          <textarea id="message" name="message" rows="4" class="w-full mt-1 p-2 rounded border" placeholder="Tell us about your crop/concern" required></textarea>
+
+          <div class="mt-4 flex gap-3">
+            <button type="submit" class="px-4 py-2 bg-emerald-600 text-white rounded">Send</button>
+            <button type="reset" class="px-3 py-2 border rounded">Clear</button>
+          </div>
+        </form>
+        <div id="formMsg" class="mt-3 text-sm"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="mt-12 bg-slate-900 text-white">
+    <div class="max-w-7xl mx-auto px-6 py-8 flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+      <div>
+        <div class="font-semibold">Agricare Advisory</div>
+        <div class="text-xs text-slate-300 mt-1">Practical farm advice — local experts.</div>
+      </div>
+      <div class="text-sm text-slate-300">© <span id="year"></span> Agricare Advisory — All rights reserved</div>
+    </div>
+  </footer>
+
+  <!-- JS -->
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    const form = document.getElementById('contactForm');
+    const msg = document.getElementById('formMsg');
+
+    form.addEventListener('submit', async function (e) {
+      e.preventDefault(); // prevent page reload
+      msg.textContent = '';
+      msg.className = 'mt-3 text-sm';
+
+      const payload = {
+        name: document.getElementById('name').value.trim(),
+        email: document.getElementById('email').value.trim(),
+        message: document.getElementById('message').value.trim()
+      };
+
+      if (!payload.name || !payload.email || !payload.message) {
+        msg.textContent = 'Please fill all fields.';
+        msg.classList.add('text-rose-600');
+        return;
+      }
+
+      try {
+        const res = await fetch('http://127.0.0.1:5001/submit', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload),
+          mode: 'cors'
+        });
+
+        if (res.ok) {
+          msg.textContent = "We'll catch you up.";
+          msg.classList.add('text-emerald-700');
+          form.reset();
+        } else {
+          let json;
+          try { json = await res.json(); } catch (e) { json = null; }
+          msg.textContent = (json && json.message) ? json.message : 'Submission failed — please try again later.';
+          msg.classList.add('text-rose-600');
+        }
+      } catch (err) {
+        msg.textContent = 'Submission failed — please check your server or network.';
+        msg.classList.add('text-rose-600');
+        console.error(err);
+      }
+    });
+  </script>
+
+</body>
+</html>
