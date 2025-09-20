@@ -14,9 +14,9 @@ CORS(app)  # allow frontend requests
 def get_db_connection():
     return mysql.connector.connect(
         host=os.getenv("MYSQL_HOST", "mysql-production-27b7.up.railway.app"),
-        user=os.getenv("MYSQL_USER"),
-        password=os.getenv("MYSQL_PASSWORD"),
-        database=os.getenv("MYSQL_DATABASE"),
+        user=os.getenv("root"),
+        password=os.getenv("jUbQMKMXXQaEYttWlIFaAAkYsTVDIFvv"),
+        database=os.getenv("railway"),
         port=int(os.getenv("MYSQL_PORT", 3306))
     )
 
