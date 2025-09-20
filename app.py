@@ -2,6 +2,7 @@ from flask import Flask, request, jsonify
 from flask_cors import CORS
 from werkzeug.security import generate_password_hash, check_password_hash
 import mysql.connector
+import os
 from mysql.connector import Error
 
 # ------------------- FLASK APP -------------------
@@ -344,6 +345,22 @@ def crop_price_trends():
                     "prices": result})
 
 
+# ------------------- HELPER FUNCTION -------------------
+def get_db_connection():
+    """Return a new MySQL connection using Railway environment variables."""
+    try:
+        import os
+        conn = mysql.connector.connect(
+            host=os.getenv("MYSQL_HOST", "localhost"),
+            user=os.getenv("MYSQL_USER", "root"),
+            password=os.getenv("MYSQL_PASSWORD", "12345678"),
+            database=os.getenv("MYSQL_DATABASE", "SIH"),
+            port=int(os.getenv("MYSQL_PORT", 3306))
+        )
+        return conn
+    except Error as e:
+        print("Error connecting to MySQL:", e)
+        return None
 
 # ------------------- RUN APP -------------------
 if __name__ == '__main__':
