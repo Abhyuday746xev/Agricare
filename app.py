@@ -204,12 +204,11 @@ def field_advisory():
 
 @app.route("/test-db")
 def test_db():
-    try:
-        conn = get_db_connection()
-        conn.close()
-        return "DB connection successful!"
-    except Exception as e:
-        return f"DB connection failed: {e}"
+    conn = get_db_connection()
+    if conn is None:
+        return "DB connection failed! Check logs for details."
+    conn.close()
+    return "DB connection successful!"
 
 
 # ------------------- ADVISORIES -------------------
