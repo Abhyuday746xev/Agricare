@@ -136,7 +136,7 @@
     // Load districts
     async function loadDistricts() {
       try {
-        const res = await fetch('http://127.0.0.1:5001/districts');
+        const res = await fetch('https://agricare-production.up.railway.app/districts');
         const data = await res.json();
         districtSelect.innerHTML = '<option value="">Select district</option>';
         data.forEach(d => {
@@ -150,7 +150,7 @@
     // Load subdistricts
     async function loadSubdistricts(districtId) {
       try {
-        const res = await fetch(`http://127.0.0.1:5001/subdistricts/${districtId}`);
+        const res = await fetch(`https://agricare-production.up.railway.app/${districtId}`);
         const data = await res.json();
         subdistrictSelect.innerHTML = '<option value="">Select subdistrict</option>';
         data.forEach(s => subdistrictSelect.innerHTML += `<option value="${s.subdistrict_id}">${s.name}</option>`);
@@ -160,7 +160,7 @@
     // Load soils
     async function loadSoils() {
       try {
-        const res = await fetch('http://127.0.0.1:5001/soils');
+        const res = await fetch('https://agricare-production.up.railway.app/soils');
         const data = await res.json();
         soilSelect.innerHTML = '<option value="">Select soil type</option>';
         data.forEach(s => soilSelect.innerHTML += `<option value="${s.soil_id}">${s.soil_name}</option>`);
@@ -193,7 +193,7 @@
       };
 
       try {
-        const res = await fetch('http://127.0.0.1:5001/field-advisory', {
+        const res = await fetch('https://agricare-production.up.railway.app/field-advisory', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(payload)
