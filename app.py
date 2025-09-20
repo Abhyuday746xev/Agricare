@@ -10,6 +10,12 @@ app = Flask(__name__)
 CORS(app)  # allow frontend requests
 
 # ------------------- HELPER FUNCTION -------------------
+
+
+@app.route("/")
+def home():
+    return "Backend is running!"
+
 def get_db_connection():
     return mysql.connector.connect(
         host=os.getenv("MYSQL_HOST", "mysql-production-27b7.up.railway.app"),
