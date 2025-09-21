@@ -3,6 +3,8 @@ from flask_cors import CORS
 from werkzeug.security import generate_password_hash, check_password_hash
 import mysql.connector
 import os
+from openai import OpenAI
+client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 from mysql.connector import Error
 
 # ------------------- FLASK APP -------------------
@@ -372,6 +374,28 @@ def test_crops():
         if conn.is_connected():
             cursor.close()
             conn.close()
+
+
+# ------------------- CHATBOT -------------------
+@app.route('/chat', methods=['POST'])
+def chat():
+    data = request.get_json()
+    query = data.get("query", "")
+
+    if not query:
+        return jsonify({"answer": "⚠️ Please enter a query"}), 400
+
+    try:
+        response = client.chat.completions.create(
+            model="gpt-4o-mini",   # You can also use "gpt-4.1" or "gpt-3.5-turbo"
+            messages=[{"role": "user", "content": query}]
+        )
+        answer = response.choices[0].message.content
+        return jsonify({"answer": answer}), 200
+    except Exception as e:
+        print("Chatbot error:", e)
+        return jsonify({"answer": f"❌ Error: {str(e)}"}), 500
+
 
 
 # ------------------- RUN APP -------------------
