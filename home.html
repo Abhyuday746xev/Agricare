@@ -32,6 +32,7 @@
 </header>
 
 
+
   <!-- HERO -->
   <section class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-8 items-center py-12">
     <div>
@@ -248,4 +249,13 @@
   </script>
 
 </body>
+  <script>
+  const menuButton = document.querySelector('header button.md\\:hidden');
+  const mobileMenu = document.getElementById('mobileMenu');
+
+  menuButton.addEventListener('click', () => {
+    mobileMenu.classList.toggle('hidden'); // show/hide menu
+  });
+</script>
+
 </html>
