@@ -356,6 +356,24 @@ def test_db():
         return "❌ DB connection failed", 500
 
 
+@app.route("/test-crops")
+def test_crops():
+    conn = get_db_connection()
+    if not conn:
+        return "❌ DB connection failed"
+    try:
+        cursor = conn.cursor()
+        cursor.execute("SELECT COUNT(*) FROM crops")
+        count = cursor.fetchone()[0]
+        return f"✅ Connected! Crops count: {count}"
+    except Exception as e:
+        return f"❌ DB error: {e}"
+    finally:
+        if conn.is_connected():
+            cursor.close()
+            conn.close()
+
+
 # ------------------- RUN APP -------------------
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 5000))
