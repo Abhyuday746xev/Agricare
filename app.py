@@ -26,7 +26,6 @@ def get_db_connection():
         print("Error connecting to MySQL:", e)
         return None
 
-
 # ------------------- USER AUTH -------------------
 @app.route('/signup', methods=['POST'])
 def signup():
@@ -387,15 +386,15 @@ def chat():
 
     try:
         response = client.chat.completions.create(
-            model="gpt-4o-mini",   # You can also use "gpt-4.1" or "gpt-3.5-turbo"
+            model="gpt-4o-mini",   # or another model like gpt-3.5-turbo
             messages=[{"role": "user", "content": query}]
         )
         answer = response.choices[0].message.content
-        return jsonify({"answer": answer}), 200
     except Exception as e:
         print("Chatbot error:", e)
-        return jsonify({"answer": f"❌ Error: {str(e)}"}), 500
+        answer = "❌ Chatbot is temporarily unavailable"
 
+    return jsonify({"answer": answer}), 200
 
 
 # ------------------- RUN APP -------------------
