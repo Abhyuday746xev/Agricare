@@ -11,13 +11,19 @@ CORS(app)  # allow frontend requests
 
 # ------------------- HELPER FUNCTION -------------------
 def get_db_connection():
-    return mysql.connector.connect(
-        host=os.getenv("MYSQL_HOST", "mysql-production-27b7.up.railway.app"),
-        user=os.getenv("MYSQL_USER"),
-        password=os.getenv("MYSQL_PASSWORD"),
-        database=os.getenv("MYSQL_DATABASE"),
-        port=int(os.getenv("MYSQL_PORT", 3306))
-    )
+    try:
+        conn = mysql.connector.connect(
+            host=os.getenv("MYSQLHOST"),
+            user=os.getenv("MYSQLUSER"),
+            password=os.getenv("MYSQLPASSWORD"),
+            database=os.getenv("MYSQLDATABASE"),
+            port=int(os.getenv("MYSQLPORT", 3306))
+        )
+        return conn
+    except Error as e:
+        print("Error connecting to MySQL:", e)
+        return None
+
 
 # ------------------- USER AUTH -------------------
 @app.route('/signup', methods=['POST'])
@@ -341,21 +347,14 @@ def crop_price_trends():
 
 
 # ------------------- HELPER FUNCTION -------------------
-def get_db_connection():
-    """Return a new MySQL connection using Railway environment variables."""
-    try:
-        import os
-        conn = mysql.connector.connect(
-            host=os.getenv("MYSQL_HOST", "localhost"),
-            user=os.getenv("MYSQL_USER", "root"),
-            password=os.getenv("MYSQL_PASSWORD", "12345678"),
-            database=os.getenv("MYSQL_DATABASE", "SIH"),
-            port=int(os.getenv("MYSQL_PORT", 3306))
-        )
-        return conn
-    except Error as e:
-        print("Error connecting to MySQL:", e)
-        return None
+@app.route("/test-db")
+def test_db():
+    conn = get_db_connection()
+    if conn:
+        return "✅ Connected to MySQL!"
+    else:
+        return "❌ DB connection failed", 500
+
 
 # ------------------- RUN APP -------------------
 if __name__ == "__main__":
