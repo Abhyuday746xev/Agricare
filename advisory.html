@@ -76,6 +76,11 @@
 
         <!-- Dynamic advisory message -->
         <div id="formMsg" class="mt-4 text-sm hidden p-3 rounded-xl shadow-sm fade-in"></div>
+        <!-- Speaker button -->
+        <button id="speakBtn" class="mt-2 px-4 py-2 bg-green-500 text-white rounded-lg hover:bg-green-600 flex items-center gap-2" style="display:none;">
+          🔊 Speak Advisory
+        </button>
+
       </div>
     </div>
 
@@ -94,6 +99,7 @@
     const severitySelect = document.getElementById('severity');
     const formMsg = document.getElementById('formMsg');
     const form = document.getElementById('advisoryForm');
+    const speakBtn = document.getElementById('speakBtn');
 
     // Load dropdowns
     async function loadCrops() {
@@ -197,6 +203,9 @@
 
         formMsg.classList.add('fade-in');
 
+        // Show speaker button
+        speakBtn.style.display = 'inline-flex';
+
         // Reset form
         form.reset();
         subdistrictSelect.innerHTML = '<option value="">Select subdistrict</option>';
@@ -208,8 +217,16 @@
         alert("Server error");
       }
     });
+
+    // Text-to-Speech
+    speakBtn.addEventListener('click', () => {
+      const text = formMsg.textContent.trim();
+      if (!text) return alert("No advisory to speak!");
+      const utterance = new SpeechSynthesisUtterance(text);
+      utterance.lang = 'en-US';
+      speechSynthesis.speak(utterance);
+    });
   </script>
 
 </body>
 </html>
-
