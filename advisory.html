@@ -98,7 +98,7 @@
     // Load dropdowns
     async function loadCrops() {
       try {
-        const res = await fetch('https://your-backend.up.railway.app/crops');
+        const res = await fetch('https://agricare-production.up.railway/crops');
         const data = await res.json();
         cropSelect.innerHTML = '<option value="">Select crop</option>';
         data.forEach(crop => cropSelect.innerHTML += `<option value="${crop.crop_id}">${crop.crop_name}</option>`);
@@ -107,7 +107,7 @@
 
     async function loadDistricts() {
       try {
-        const res = await fetch('https://your-backend.up.railway.app/districts');
+        const res = await fetch('https://agricare-production.up.railway/districts');
         const data = await res.json();
         districtSelect.innerHTML = '<option value="">Select district</option>';
         data.forEach(d => districtSelect.innerHTML += `<option value="${d.district_id}">${d.name}</option>`);
@@ -116,7 +116,7 @@
 
     async function loadSubdistricts(districtId) {
       try {
-        const res = await fetch(`https://your-backend.up.railway.app/subdistricts/${districtId}`);
+        const res = await fetch(`https://agricare-production.up.railway/${districtId}`);
         const data = await res.json();
         subdistrictSelect.innerHTML = '<option value="">Select subdistrict</option>';
         data.forEach(s => subdistrictSelect.innerHTML += `<option value="${s.subdistrict_id}">${s.name}</option>`);
@@ -125,7 +125,7 @@
 
     async function loadSoils() {
       try {
-        const res = await fetch('https://your-backend.up.railway.app/soils');
+        const res = await fetch('https://agricare-production.up.railway/soils');
         const data = await res.json();
         soilSelect.innerHTML = '<option value="">Select soil</option>';
         data.forEach(s => soilSelect.innerHTML += `<option value="${s.soil_id}">${s.soil_name}</option>`);
@@ -167,7 +167,7 @@
 
       try {
         // Save advisory
-        const saveRes = await fetch('https://your-backend.up.railway.app/advisory', {
+        const saveRes = await fetch('https://agricare-production.up.railway/advisory', {
           method: 'POST',
           headers: {'Content-Type':'application/json'},
           body: JSON.stringify(payload)
@@ -176,7 +176,7 @@
         if (!saveRes.ok) { alert(saveData.message || "Failed"); return; }
 
         // Fetch dynamic advisory text
-        const advRes = await fetch('https://your-backend.up.railway.app/get-advisory', {
+        const advRes = await fetch('https://agricare-production.up.railway/get-advisory', {
           method: 'POST',
           headers: {'Content-Type':'application/json'},
           body: JSON.stringify({ crop: payload.crop, severity: payload.severity })
