@@ -149,13 +149,16 @@
 
     // Load subdistricts
     async function loadSubdistricts(districtId) {
-      try {
-        const res = await fetch(`https://agricare-production.up.railway.app/${districtId}`);
-        const data = await res.json();
-        subdistrictSelect.innerHTML = '<option value="">Select subdistrict</option>';
-        data.forEach(s => subdistrictSelect.innerHTML += `<option value="${s.subdistrict_id}">${s.name}</option>`);
-      } catch (err) { console.error(err); }
-    }
+  try {
+    const res = await fetch(`https://agricare-production.up.railway.app/subdistricts/${districtId}`);
+    const data = await res.json();
+    subdistrictSelect.innerHTML = '<option value="">Select subdistrict</option>';
+    data.forEach(s => subdistrictSelect.innerHTML += `<option value="${s.subdistrict_id}">${s.name}</option>`);
+  } catch (err) {
+    console.error(err);
+  }
+}
+
 
     // Load soils
     async function loadSoils() {
