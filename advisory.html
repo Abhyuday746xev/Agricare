@@ -176,7 +176,7 @@
         if (!saveRes.ok) { alert(saveData.message || "Failed"); return; }
 
         // Fetch dynamic advisory text
-        const advRes = await fetch('http://127.0.0.1:5001/get-advisory', {
+        const advRes = await fetch('https://your-backend.up.railway.app/get-advisory', {
           method: 'POST',
           headers: {'Content-Type':'application/json'},
           body: JSON.stringify({ crop: payload.crop, severity: payload.severity })
