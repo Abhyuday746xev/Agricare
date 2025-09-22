@@ -412,6 +412,60 @@ function changeLanguage(lang) {
     });
   });
 </script>
+<!-- Chatbot Container -->
+<div id="chat-container" style="width: 350px; border: 1px solid #ccc; padding: 10px; border-radius: 12px; position: fixed; bottom: 20px; right: 20px; background: #f9f9f9; z-index: 1000;">
+  <div id="chat-box" style="height: 250px; overflow-y: auto; border: 1px solid #eee; padding: 10px; margin-bottom: 5px; border-radius: 8px;"></div>
+  <div id="chat-options">
+    <button onclick="selectOption('best crop')">Best Crop for My Soil</button>
+    <button onclick="selectOption('fertilizer')">Fertilizer Recommendation</button>
+    <button onclick="selectOption('irrigation')">Irrigation Schedule</button>
+    <button onclick="selectOption('weather')">Weather Map</button>
+  </div>
+</div>
+
+<script>
+const predefinedResponses = {
+  "best crop": { 
+    message: "You can get a personalized crop advisory based on your soil and location.", 
+    redirect: "field.html" 
+  },
+  "fertilizer": { 
+    message: "Check the best fertilizer recommendations for your crop and soil.", 
+    redirect: "advisory.html" 
+  },
+  "irrigation": { 
+    message: "Follow this guide for irrigation schedules of different crops.", 
+    redirect: "advisory.html" 
+  },
+  "weather": { 
+    message: "Here is the live weather map of India. Scroll down to see it below.", 
+    redirect: "#weather-section" // Scrolls to the weather map section
+  }
+};
+
+function selectOption(option) {
+  const chatBox = document.getElementById("chat-box");
+  const responseData = predefinedResponses[option];
+
+  // Display user selection
+  chatBox.innerHTML += `<p><b>You:</b> ${option}</p>`;
+
+  // Display bot message
+  chatBox.innerHTML += `<p><b>AgriBot:</b> ${responseData.message}</p>`;
+  chatBox.scrollTop = chatBox.scrollHeight;
+
+  // Redirect / Scroll
+  setTimeout(() => {
+    if (responseData.redirect.startsWith("#")) {
+      // Scroll to section
+      document.querySelector(responseData.redirect).scrollIntoView({ behavior: 'smooth' });
+    } else {
+      // Navigate to another page
+      window.location.href = responseData.redirect;
+    }
+  }, 800);
+}
+</script>
 
 </body>
 </html>
